@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    public function addData($data){
+        Post::table('posts')->insert($data);
+    }
     use HasFactory;
     protected $fillable = [
         'title', 'kategori', 'content', 'ket', 'foto'
     ];
-}
-class Gambar extends Model
-{
-    protected $table = "gambar";
 
-    protected $fillable = ['file','keterangan'];
 }
+

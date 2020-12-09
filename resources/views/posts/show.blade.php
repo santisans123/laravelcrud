@@ -22,7 +22,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <center>
                 <div class="form-group">
-                <img src="{{ Storage::url('').$post->foto }}" class="rounded" style="width: 150px">
+                <img src="{{ url('gambar/'.$post->foto)}}" class="rounded" style="width: 150px">
                 </div>
             </center>
         </div>

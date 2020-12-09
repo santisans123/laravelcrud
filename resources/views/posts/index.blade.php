@@ -26,6 +26,7 @@
         <tr>
             <th width="20px" class="text-center">No</th>
             <th>Title</th>
+            <th width="280px"class="text-center">Gambar</th>
             <th width="280px"class="text-center">Action</th>
         </tr>
     @isset($posts)
@@ -34,14 +35,15 @@
         <tr>
             <td class="text-center">{{ ++$i }}</td>
             <td>{{ $post->title }}</td>
+            <td>
+                <img src="{{ url('gambar/'.$post->foto)}}" alt="foto">
+            </td>
             <td class="text-center">
                 <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
 
                     <a class="btn btn-info btn-sm" href="{{ route('posts.show',$post->id) }}">Show</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('posts.edit',$post->id) }}">Edit</a>
 
-                    <a data-target="#editacara" data-toggle="modal" class="btn btn-warning btn-sm" href="{{ route('posts.edit',$post->id) }}">Edit
-
-                    @include('posts.edit')
                     </a>
                     @csrf
                     @method('DELETE')
