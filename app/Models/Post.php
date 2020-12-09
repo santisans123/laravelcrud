@@ -12,3 +12,9 @@ class Post extends Model
         'title', 'kategori', 'content', 'ket', 'foto'
     ];
 }
+class Gambar extends Model
+{
+    protected $table = "gambar";
+
+    protected $fillable = ['file','keterangan'];
+}
