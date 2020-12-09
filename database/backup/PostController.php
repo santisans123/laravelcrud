@@ -14,10 +14,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Post $post)
+    public function index()
     {
         $posts = Post ::latest()->paginate(5);
-        return view('posts.index',compact('posts'),)
+        return view('posts.index',compact('posts'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
      /**
@@ -81,10 +81,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post=Post::findOrFail($id);
-        return view('posts.edit',['post'=> $post]);
+        return view('posts.edit',compact('post'));
     }
 
     /**

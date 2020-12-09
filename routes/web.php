@@ -24,8 +24,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/acara',[AcaraController::class,'index'])->name('acara');
-Route::get('/edit',[PostController::class,'index']);
 Route::get('/view',[AcaraController::class,'view'])->name('view');
+Route::get('/edit',[PostController::class,'index']);
 Route::post('/acara/cari',[PostController::class,'cari'])->name('acara.cari');
 
 

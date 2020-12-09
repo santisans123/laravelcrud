@@ -28,7 +28,9 @@
             <th>Title</th>
             <th width="280px"class="text-center">Action</th>
         </tr>
-        @foreach ($posts as $post)
+    @isset($posts)
+    @foreach ($posts as $post)
+
         <tr>
             <td class="text-center">{{ ++$i }}</td>
             <td>{{ $post->title }}</td>
@@ -37,8 +39,10 @@
 
                     <a class="btn btn-info btn-sm" href="{{ route('posts.show',$post->id) }}">Show</a>
 
-                    <a data-target="#editacara" data-toggle="modal" class="btn btn-warning btn-sm" href="{{ route('posts.edit',$post->id) }}" >Edit</a>
+                    <a data-target="#editacara" data-toggle="modal" class="btn btn-warning btn-sm" href="{{ route('posts.edit',$post->id) }}">Edit
 
+                    @include('posts.edit')
+                    </a>
                     @csrf
                     @method('DELETE')
 
@@ -47,8 +51,10 @@
             </td>
         </tr>
         @endforeach
+    @endisset
+
     </table>
     {!! $posts->links() !!}
 
  @endsection
- @include('posts.edit')
+
