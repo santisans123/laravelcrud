@@ -12,7 +12,4 @@ class AcaraController extends Controller
     public function index() {
         return view('admin.acara.tambah');
     }
-    public function view() {
-        return view('posts.view');
-    }
 }

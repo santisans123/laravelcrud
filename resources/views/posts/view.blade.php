@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -22,12 +23,25 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand js-scroll-trigger " href="#page-top">EVENT</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ml-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ml-auto">
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu
+                        <i class="fas fa-bars ml-1"></i>
+                     </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav text-uppercase ml-auto">
+                    <div class="m-3">
+                <form  action="{{ route('acara.cari') }}" method="POST" class="d-sm-inline-block form-inline m-10  my-2 my-md-0 mw-100 navbar-search m=3">
+                    @csrf
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-white border-0 small" placeholder="Search for..."aria-label="Search" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <button class="btn btn-info" type="button">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>
+                                </div>
+                        </div>
+                </form>
+            </div>
                         <li ><a class="nav-link js-scroll-trigger" href="#umum">Umum</a></a></li>
                         <li ><a class="nav-link js-scroll-trigger" href="#kampus">Kampus</a></li>
                         <li ><a class="nav-link js-scroll-trigger" href="#jurusan">Jurusan</a></li>
@@ -52,9 +66,31 @@
         <section class="page-section" id="about">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">EVENT CATEGORY</h2>
-                    <h3 class="section-subheading text-muted">Lihat Acara Berdasarkan Kategorinya</h3>
+                    <h2 class="section-heading text-uppercase">ENJOY YOUR EVENT</h2>
+                    <h3 class="section-subheading text-muted">Acara terbaru Politeknik Elektronika Negeri Surabaya</h3>
                 </div>
+
+    @isset($posts)
+    @foreach ($posts as $post)
+            <center>
+                <td> <h4> {{ $post->title }} </h4></td> <br>
+                <td>
+                    <img src="{{ url('gambar/'.$post->foto)}}" alt="foto">
+                </td> <br>
+            </center>
+            <td>{{ $post->updated_at }}</td> <br>
+            <td>{!! $post->ket !!}</td> <br>
+            <td class="text-center">
+                <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
+                    <a class="btn btn-info btn-sm" href="{{ route('posts.show',$post->id) }}">Read More</a>
+                    </a>
+                </form> <br>
+            </td>
+
+    @endforeach
+    @endisset
+    {!! $posts->links() !!}
+
             </div>
         </section>
         <!-- Team-->

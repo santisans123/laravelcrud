@@ -14,22 +14,18 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function view() {
+
+        $posts = Post ::latest()->paginate(5);
+        return view('posts.view',compact('posts'),)
+            ->with('i', (request()->input('page', 1) - 1) * 10);
+    }
     public function index(Post $post)
     {
         $posts = Post ::latest()->paginate(5);
         return view('posts.index',compact('posts'),)
             ->with('i', (request()->input('page', 1) - 1) * 10);
-    }
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function view()
-    {
-        $posts = Post ::latest()->paginate(5);
-        return view('posts.view',compact('posts'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+
     }
 
     /**
@@ -39,18 +35,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        $file = Request()->foto('foto');
-        $fileName = Request()->title.'.'.$file->extension();
-        $file->move(public_path('gambar'), $fileName);
 
-        $data = [
-            'title' => Request()->title,
-            'kategori' => Request()->kategori,
-            'content' => Request()->content,
-            'ket' => Request()->ket,
-            'foto' => Request()->foto,
-        ];
-        $this->Post->addData($data);
         return redirect()->route('posts.index')
                         ->with('success','Post created successfully.');
         return view('admin.acara.tambah');
@@ -78,6 +63,7 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')
                         ->with('success','Post created successfully.');
+
     }
 
     /**
@@ -90,6 +76,7 @@ class PostController extends Controller
     {
         return view('posts.show',compact('post'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -122,8 +109,8 @@ class PostController extends Controller
 
         $post->update($request->all());
 
-        return redirect()->route('posts.index')
-                        ->with('success','Post updated successfully');
+       return redirect()->route('posts.index')
+                        ->with('success','Post deleted successfully');
     }
 
     /**
@@ -138,6 +125,7 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')
                         ->with('success','Post deleted successfully');
+
     }
 
         public function cari(Request $request){

@@ -42,7 +42,7 @@
                 <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
 
                     <a class="btn btn-info btn-sm" href="{{ route('posts.show',$post->id) }}">Show</a>
-                    <a class="btn btn-primary btn-sm" href="{{ route('posts.edit',$post->id) }}">Edit</a>
+                    <a class="btn btn-secondary btn-sm" href="{{ route('posts.edit',$post->id) }}">Edit</a>
 
                     </a>
                     @csrf

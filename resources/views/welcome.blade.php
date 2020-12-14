@@ -31,6 +31,7 @@
                         <li ><a class="nav-link js-scroll-trigger" href="#about">Category's</a></a></li>
                         <li ><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
                         <li ><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/view">Lihat Acara</a></li>
                         @if (Route::has('login'))
                         @auth
                             <li class="nav-item"><a href="{{ url('/dashboard') }}" class="nav-link js-scroll-trigger">Dashboard</a></li>

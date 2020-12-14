@@ -3,11 +3,9 @@
 @section('content')
     <div class="row mt-5 mb-5">
         <div class="col-lg-12 margin-tb">
-            <div class="float-left">
-                <h2>SHOW</h2>
-            </div>
             <div class="float-right">
-                <a class="btn btn-secondary" href="{{ route('posts.index') }}"> Back</a>
+                <a class="btn btn-primary" href="/view"> Back To Home </a>
+                <a class="btn btn-secondary" href="{{ route('posts.index') }}"> Back To Dashboard </a>
             </div>
         </div>
     </div>
