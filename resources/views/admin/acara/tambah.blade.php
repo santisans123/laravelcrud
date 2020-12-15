@@ -9,7 +9,7 @@
     </div>
 @endif
 
-<form action="{{ route('posts.store') }}" method="POST">
+<form action="{{ route('posts.store') }}" enctype="multipart/form-data" method="POST">
     @csrf
 <div class="modal fade" id="tambahacara" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -40,7 +40,7 @@
             </div>
             <div>
                 <x-jet-label for="foto" value="{{ __('Pilih Foto') }}" />
-                <x-jet-input id="foto" class="form-control form-control-user" type="file" name="foto" :value="old('foto')" required autofocus autocomplete="foto" enctype="multipart/form-data"/>
+                <x-jet-input id="foto" class="form-control form-control-user" type="file" name="foto"  />
             </div>
             </div>
         <div class="m-3">

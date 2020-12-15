@@ -35,7 +35,6 @@ class PostController extends Controller
      */
     public function create()
     {
-
         return redirect()->route('posts.index')
                         ->with('success','Post created successfully.');
         return view('admin.acara.tambah');
@@ -59,8 +58,18 @@ class PostController extends Controller
             'foto' => 'required',
         ]);
 
-        Post::create($request->all());
+        $thumbnail = $request->file('foto');
 
+    	$nama_file = time()."_".$thumbnail->getClientOriginalName();
+    	$tujuan = 'foto';
+    	$thumbnail->move($tujuan, $nama_file);
+
+    	if ($request->publish != null) {
+    		$status = "published";
+    	} else {
+    		$status = "drafted";
+    	}
+        Post::create($request->all());
         return redirect()->route('posts.index')
                         ->with('success','Post created successfully.');
 

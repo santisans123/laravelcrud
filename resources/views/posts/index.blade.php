@@ -36,7 +36,7 @@
             <td class="text-center">{{ ++$i }}</td>
             <td>{{ $post->title }}</td>
             <td>
-                <img src="{{ url('gambar/'.$post->foto)}}" alt="foto">
+                <img src="{{ url('uploads/'.$post->foto)}}" alt="foto">
             </td>
             <td class="text-center">
                 <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
