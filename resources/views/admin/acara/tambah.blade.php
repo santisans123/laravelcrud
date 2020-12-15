@@ -40,7 +40,7 @@
             </div>
             <div>
                 <x-jet-label for="foto" value="{{ __('Pilih Foto') }}" />
-                <x-jet-input id="foto" class="form-control form-control-user" type="file" name="foto"  />
+                <x-jet-input id="foto" class="form-control form-control-user" type="file" name="foto" enctype="multipart/form-data" />
             </div>
             </div>
         <div class="m-3">

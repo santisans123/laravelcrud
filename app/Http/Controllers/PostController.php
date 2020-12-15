@@ -35,6 +35,7 @@ class PostController extends Controller
      */
     public function create()
     {
+
         return redirect()->route('posts.index')
                         ->with('success','Post created successfully.');
         return view('admin.acara.tambah');
@@ -50,26 +51,32 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
+
         $request->validate([
             'title' => 'required',
             'kategori' => 'required',
             'content' => 'required',
             'ket' => 'required',
-            'foto' => 'required',
+            'foto' => 'required|file',
         ]);
-
-        $thumbnail = $request->file('foto');
-
-    	$nama_file = time()."_".$thumbnail->getClientOriginalName();
-    	$tujuan = 'foto';
-    	$thumbnail->move($tujuan, $nama_file);
-
-    	if ($request->publish != null) {
-    		$status = "published";
-    	} else {
-    		$status = "drafted";
-    	}
         Post::create($request->all());
+
+        $file = $request->file('foto');
+
+        // Mendapatkan Nama File
+        $nama_file = $file->getClientOriginalName();
+
+        // Mendapatkan Extension File
+        $extension = $file->getClientOriginalExtension();
+
+        // Mendapatkan Ukuran File
+        $ukuran_file = $file->getSize();
+
+        // Proses Upload File
+        $destinationPath = 'uploads';
+        $file->move($destinationPath,$file->getClientOriginalName());
+
+
         return redirect()->route('posts.index')
                         ->with('success','Post created successfully.');
 
