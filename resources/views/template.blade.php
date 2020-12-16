@@ -60,7 +60,7 @@
                     </div>
                 </div>
             </li>
-            @include('admin.acara.tambah')
+            @include('posts.tambah')
 
             <!-- Divider -->
             <hr class="sidebar-divider">

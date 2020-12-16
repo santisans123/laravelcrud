@@ -20,7 +20,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <center>
                 <div class="form-group">
-                <img src="{{ url('gambar/'.$post->foto)}}" class="rounded" style="width: 150px">
+                <img src="{{ url('uploads/'.$post->foto)}}" class="rounded" style="width: 550px">
                 </div>
             </center>
         </div>

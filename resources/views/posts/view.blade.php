@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -70,12 +69,12 @@
                     <h3 class="section-subheading text-muted">Acara terbaru Politeknik Elektronika Negeri Surabaya</h3>
                 </div>
 
-    @isset($posts)
-    @foreach ($posts as $post)
+        @isset($posts)
+        @foreach ($posts as $post)
             <center>
                 <td> <h4> {{ $post->title }} </h4></td> <br>
                 <td>
-                    <img src="{{ url('gambar/'.$post->foto)}}" alt="foto">
+                    <img src="{{ url('uploads/'.$post->foto)}}" alt="foto" class="h-50 w-50">
                 </td> <br>
             </center>
             <td>{{ $post->updated_at }}</td> <br>
@@ -89,8 +88,8 @@
 
     @endforeach
     @endisset
-    {!! $posts->links() !!}
-
+    <div class="justify-content-center d-flex ">{{ $posts->links() }}</div>
+    <br>
             </div>
         </section>
         <!-- Team-->
@@ -165,4 +164,5 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>
+
 </html>
