@@ -59,24 +59,27 @@ class PostController extends Controller
             'ket' => 'required',
             'foto' => 'required|file',
         ]);
-        Post::create($request->all());
 
-        $file = $request->file('foto');
+        $foto = $request->file('foto');
 
-        // Mendapatkan Nama File
-        $nama_file = $file->getClientOriginalName();
+    	$nama_file = time()."_".$foto->getClientOriginalName();
+    	$tujuan = 'uploads';
+    	$foto->move($tujuan, $nama_file);
 
-        // Mendapatkan Extension File
-        $extension = $file->getClientOriginalExtension();
+    	if ($request->publish != null) {
+    		$status = "published";
+    	} else {
+    		$status = "drafted";
+    	}
 
-        // Mendapatkan Ukuran File
-        $ukuran_file = $file->getSize();
-
-        // Proses Upload File
-        $destinationPath = 'uploads';
-        $file->move($destinationPath,$file->getClientOriginalName());
-
-
+        Post::create([
+            'foto' => $nama_file,
+    		'title' => $request->title,
+    		'kategori' => $request->kategori,
+    		'content' => $request->content,
+    		'status' => $status,
+    		'ket' => $request->ket,
+        ]);
         return redirect()->route('posts.index')
                         ->with('success','Post created successfully.');
 
