@@ -10114,6 +10114,78 @@ img::-moz-selection {
     margin-right: 0;
   }
 }
+
+section .sidebar {
+    padding: 5px;
+    width: 27%;
+    position: relative;
+    float: right;
+    border-width: 1px;
+    background-color: #f3f0f0;
+  }
+
+  section .sidebar .widged {
+    width: 100%;
+    background-bottom: 5px;
+    background-color: white;
+  }
+
+  section .sidebar .widged .gif {
+    width: 99%;
+    height: 250px;
+    border-top: 1px solid gray;
+  }
+
+  section .sidebar .widged .judulwidged {
+    background-color: #8ebcf8;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 5px 0px;
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    text-decoration: none;
+  }
+
+  section .sidebar .widged .judulwidged .change {
+    margin-top: 20px;
+  }
+
+  section .sidebar .widged ul {
+    margin: 0px 0px;
+    padding: 0px 0px;
+    list-style-type: none;
+  }
+
+  section .sidebar .widged ul li {
+    padding: 0px 0px;
+    background-position: left;
+    color: white;
+  }
+
+  section .sidebar .widged ul li a {
+    color: black;
+    border-bottom: 1px solid;
+    display: block;
+    margin-bottom: 5px;
+    padding: 4px 5px 3px 10px;
+    color: black;
+    text-decoration: none;
+  }
+
+  section .sidebar .widged ul li a:hover {
+    color: blue;
+  }
+
+  section #information {
+    width: 70%;
+    height: auto;
+    position: relative;
+    margin-top: 5px;
+  }
+
 header.masthead {
   padding-top: 10.5rem;
   padding-bottom: 6rem;
@@ -10125,6 +10197,7 @@ header.masthead {
   background-position: center center;
   background-size: cover;
 }
+
 header.masthead .masthead-subheading {
   font-size: 1.5rem;
   font-style: italic;

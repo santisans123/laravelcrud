@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tutorial CRUD Laravel 8 untuk Pemula - Ilmucoding.com</title>
+    <title>Edit</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -28,7 +28,7 @@
         </div>
     @endif
 
-    <form action="{{ route('posts.update',$post->id) }}" method="POST">
+    <form action="{{ route('posts.update',$post->id) }}" method="POST" {{ $post->ket }}>
         @csrf
         @method('PUT')
 
@@ -54,7 +54,8 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <div>
-                        <x-jet-input id="foto" class="form-control form-control-user" type="file" name="foto" :value="old('foto')" required autofocus autocomplete="foto" enctype="multipart/form-data"/>
+
+                        <x-jet-input id="foto" class="form-control form-control-user" type="file" name="foto" :value="old('foto')" required autofocus autocomplete="foto" />
                     </div>
                 </div>
             </div>

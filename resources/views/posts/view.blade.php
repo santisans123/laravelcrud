@@ -19,56 +19,55 @@
     </head>
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
+        <nav class="bg-dark  navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
                 <a class="navbar-brand js-scroll-trigger " href="#page-top">EVENT</a>
                     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         Menu
                         <i class="fas fa-bars ml-1"></i>
-                     </button>
+                    </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav text-uppercase ml-auto">
-                    <div class="m-3">
-                <form  action="{{ route('acara.cari') }}" method="POST" class="d-sm-inline-block form-inline m-10  my-2 my-md-0 mw-100 navbar-search m=3">
-                    @csrf
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-white border-0 small" placeholder="Search for..."aria-label="Search" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button class="btn btn-info" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                        </div>
-                </form>
-            </div>
-                        <li ><a class="nav-link js-scroll-trigger" href="#umum">Umum</a></a></li>
-                        <li ><a class="nav-link js-scroll-trigger" href="#kampus">Kampus</a></li>
-                        <li ><a class="nav-link js-scroll-trigger" href="#jurusan">Jurusan</a></li>
-                        <li ><a class="nav-link js-scroll-trigger" href="#kelas">Kelas</a></li>
-                        <li ><a class="nav-link js-scroll-trigger" href="#lain">Lainnya</a></li>
-                        @if (Route::has('login'))
-                        @auth
-                            <li class="nav-item"><a href="{{ url('/dashboard') }}" class="nav-link js-scroll-trigger">Dashboard</a></li>
-                            @else
-                                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link js-scroll-trigger">Login</a></li>
-                            @if (Route::has('register'))
-                                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link js-scroll-trigger">Register</a></li>
+                            <div class="m-3 ">
+                                <form  action="{{ route('acara.cari') }}" method="POST" class="d-sm-inline-block form-inline m-10  my-2 my-md-0 mw-100 navbar-search m=3">
+                                    @csrf
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-white border-0 small" placeholder="Search for..."aria-label="Search" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-info" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <li ><a class="nav-link js-scroll-trigger" href="#umum">Umum</a></a></li>
+                            <li ><a class="nav-link js-scroll-trigger" href="#kampus">Kampus</a></li>
+                            <li ><a class="nav-link js-scroll-trigger" href="#jurusan">Jurusan</a></li>
+                            <li ><a class="nav-link js-scroll-trigger" href="#kelas">Kelas</a></li>
+                            <li ><a class="nav-link js-scroll-trigger" href="#lain">Lainnya</a></li>
+                            @if (Route::has('login'))
+                            @auth
+                                <li class="nav-item"><a href="{{ url('/dashboard') }}" class="nav-link js-scroll-trigger">Dashboard</a></li>
+                                @else
+                                    <li class="nav-item"><a href="{{ route('login') }}" class="nav-link js-scroll-trigger">Login</a></li>
+                                    @if (Route::has('register'))
+                                        <li class="nav-item"><a href="{{ route('register') }}" class="nav-link js-scroll-trigger">Register</a></li>
+                                    @endif
                                 @endif
                             @endif
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
 
+                        </ul>
+                    </div>
+                </div>
+        </nav>
         <!-- About-->
         <section class="page-section" id="about">
             <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">ENJOY YOUR EVENT</h2>
+                <div class="text-center m-5">
+                    <h2 class="section-heading text-uppercase ">ENJOY YOUR EVENT</h2>
                     <h3 class="section-subheading text-muted">Acara terbaru Politeknik Elektronika Negeri Surabaya</h3>
                 </div>
-
         @isset($posts)
         @foreach ($posts as $post)
             <center>
@@ -85,10 +84,11 @@
                     </a>
                 </form> <br>
             </td>
+            <hr>
 
     @endforeach
     @endisset
-    <div class="justify-content-center d-flex ">{{ $posts->links() }}</div>
+    {{ $posts->links() }}
     <br>
             </div>
         </section>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -18,7 +19,7 @@ class PostController extends Controller
 
         $posts = Post ::latest()->paginate(5);
         return view('posts.view',compact('posts'),)
-            ->with( (request()->input('page', 1) - 1) * 5);
+            ->with('i',(request()->input('page', 1) - 1) * 5);
     }
 
     public function index(Post $post)
@@ -127,10 +128,11 @@ class PostController extends Controller
             'foto' => 'required',
         ]);
 
+
         $post->update($request->all());
 
        return redirect()->route('posts.index')
-                        ->with('success','Post deleted successfully');
+                        ->with('success','Post update successfully');
     }
 
     /**
@@ -148,9 +150,15 @@ class PostController extends Controller
 
     }
 
-        public function cari(Request $request){
-        $cari = $request->cari;
-        $posts = Post::where('title',$cari)->get();
-        return view('posts.index',compact('posts'));
-}
+        public function cari(Request $request, $title){
+            $cari = $request->cari;
+
+    		// mengambil data dari table pegawai sesuai pencarian data
+            $posts = Post ::latest()->paginate(5)
+		->where('title','like',"%".$cari."%");
+
+    		// mengirim data pegawai ke view index
+		return view('posts.index',['title' => $title])
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+        }
 }
