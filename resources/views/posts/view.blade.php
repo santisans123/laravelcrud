@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
     <head>
         <meta charset="utf-8" />
@@ -16,6 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -29,17 +30,17 @@
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav text-uppercase ml-auto">
                             <div class="m-3 ">
-                                <form  action="{{ route('acara.cari') }}" method="POST" class="d-sm-inline-block form-inline m-10  my-2 my-md-0 mw-100 navbar-search m=3">
-                                    @csrf
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-white border-0 small" placeholder="Search for..."aria-label="Search" aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-info" type="button">
-                                                    <i class="fas fa-search fa-sm"></i>
-                                                </button>
-                                            </div>
-                                    </div>
-                                </form>
+                            <form  action="/cariuser" method="GET" class="d-sm-inline-block form-inline m-10  my-2 my-md-0 mw-100 navbar-search m=3">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="text" class="form-control bg-white border-0 small" placeholder="Search for..."aria-label="Search" aria-describedby="basic-addon2" name="cari" value="{{old('cari')}}">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-info" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                </div>
+                            </form>
                             </div>
                             <li ><a class="nav-link js-scroll-trigger" href="#umum">Umum</a></a></li>
                             <li ><a class="nav-link js-scroll-trigger" href="#kampus">Kampus</a></li>

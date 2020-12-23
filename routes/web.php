@@ -23,10 +23,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/acara',[AcaraController::class,'index'])->name('acara');
 Route::get('/view',[PostController::class,'view'])->name('view');
 Route::get('/edit',[PostController::class,'index']);
 Route::get('/acara/cari',[PostController::class,'cari'])->name('acara.cari');
+Route::get('/cariuser',[PostController::class,'cariuser'])->name('cariuser');
 
 
 

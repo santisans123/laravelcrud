@@ -52,8 +52,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $request->validate([
             'title' => 'required',
             'kategori' => 'required',
@@ -68,18 +66,11 @@ class PostController extends Controller
     	$tujuan = 'uploads';
     	$foto->move($tujuan, $nama_file);
 
-    	if ($request->publish != null) {
-    		$status = "published";
-    	} else {
-    		$status = "drafted";
-    	}
-
         Post::create([
             'foto' => $nama_file,
     		'title' => $request->title,
     		'kategori' => $request->kategori,
     		'content' => $request->content,
-    		'status' => $status,
     		'ket' => $request->ket,
         ]);
         return redirect()->route('posts.index')
@@ -107,7 +98,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post=Post::findOrFail($id);
+        $post=Post::find($id);
         return view('posts.edit',['post'=> $post]);
     }
 
@@ -118,21 +109,39 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update($id, Request $request)
     {
         $request->validate([
             'title' => 'required',
             'kategori' => 'required',
             'content' => 'required',
             'ket' => 'required',
-            'foto' => 'required',
         ]);
 
+        $foto = $request->file('foto');
 
+        if ($foto != null) {
+        	$nama_file = time()."_".$foto->getClientOriginalName();
+        	$tujuan = 'uploads';
+        	$foto->move($tujuan, $nama_file);
+        }
+
+    	if ($request->publish != null) {
+    		$status = "published";
+    	} else {
+    		$status = "drafted";
+    	}
+
+    	$post = Post::find($id);
+    	$post->title = $request->title;
+    	$post->kategori = $request->kategori;
+    	$post->content = $request->content;
+    	$post->ket = $request->ket;
+        if($foto != null)
+    	   $post->foto = $nama_file;
+    	$post->save();
         $post->update($request->all());
-
-       return redirect()->route('posts.index')
-                        ->with('success','Post update successfully');
+       return redirect()->route('posts.index');
     }
 
     /**
@@ -150,15 +159,24 @@ class PostController extends Controller
 
     }
 
-        public function cari(Request $request, $title){
+        public function cari(Request $request){
             $cari = $request->cari;
 
-    		// mengambil data dari table pegawai sesuai pencarian data
-            $posts = Post ::latest()->paginate(5)
-		->where('title','like',"%".$cari."%");
+            $posts = Post ::latest()
+		->where('title','like',"%".$cari."%")->paginate(5);
 
-    		// mengirim data pegawai ke view index
-		return view('posts.index',['title' => $title])
+		return view('posts.cari',['posts' => $posts])
         ->with('i', (request()->input('page', 1) - 1) * 5);
+
+        }
+        public function cariuser(Request $request){
+            $cari = $request->cari;
+
+            $posts = Post ::latest()
+		->where('title','like',"%".$cari."%")->paginate(5);
+
+		return view('posts.view',['posts' => $posts])
+        ->with('i', (request()->input('page', 1) - 1) * 5);
+
         }
 }

@@ -4,11 +4,18 @@
     <div class="row mt-5 mb-5">
         <div class="col-lg-12 margin-tb">
             <div class="float-right">
-                <a class="btn btn-primary" href="/view"> Back To Home </a>
+            @if (Route::has('login'))
+            @auth
                 <a class="btn btn-secondary" href="{{ route('posts.index') }}"> Back To Dashboard </a>
+                <a class="btn btn-primary" href="/view"> Back To Home </a>
+                @else
+                    <a class="btn btn-primary" href="/view"> Back To Home </a>
+                @endif
+            @endif
             </div>
         </div>
     </div>
+
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <center>

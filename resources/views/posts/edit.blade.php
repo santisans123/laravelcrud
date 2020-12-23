@@ -53,10 +53,10 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <div>
-
-                        <x-jet-input id="foto" class="form-control form-control-user" type="file" name="foto" :value="old('foto')" required autofocus autocomplete="foto" />
-                    </div>
+                <div>
+                <x-jet-label for="foto" value="{{ __('Pilih Foto') }}" />
+                <x-jet-input id="foto" class="form-control form-control-user" type="file" name="foto"/>
+            </div>
                 </div>
             </div>
 

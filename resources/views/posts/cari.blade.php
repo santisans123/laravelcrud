@@ -7,14 +7,14 @@
             <div class="input-group">
                 <input type="text" class="form-control bg-white border-0 small" placeholder="Search for..."aria-label="Search" aria-describedby="basic-addon2" name="cari" value="{{old('cari')}}">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="button" name="cari" value="{{old('cari')}}">
-                        <i class="fas fa-search fa-sm"name="cari" value="{{old('cari')}}"></i>
+                    <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
                     </button>
                 </div>
             </div>
         </form>
         <div class="float-right">
-            <a class="btn btn-primary btn-sm" data-target="#tambahacara" data-toggle="modal">Create</a>
+            <a class="btn btn-primary btn-sm" href="/edit">Back</a>
         </div>
     </div>
     @if ($message = Session::get('success'))
