@@ -159,21 +159,21 @@ sup {
 }
 
 a {
-  color: #fed136;
+  color:blue;
   text-decoration: none;
   background-color: transparent;
 }
 a:hover {
-  color: #e6b301;
+  color:blue;
   text-decoration: underline;
 }
 
 a:not([href]):not([class]) {
-  color: inherit;
+  color: blue;
   text-decoration: none;
 }
 a:not([href]):not([class]):hover {
-  color: inherit;
+  color: blue;
   text-decoration: none;
 }
 

@@ -70,18 +70,17 @@
                 Addons
             </div>
 
+            <li class="nav-item">
+                <a class="nav-link" href="/message">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>SARAN USER</span></a>
+            </li>
+
             <!-- Nav Item - Charts -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>GAMBAR</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>TANGGAL</span></a>
             </li>
 
             <!-- Divider -->
